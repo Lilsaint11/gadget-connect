@@ -2,6 +2,7 @@ import { IoMdTime } from "react-icons/io";
 import { CiLock,CiDeliveryTruck } from "react-icons/ci";
 
 const Hero = () => {
+   
     return ( 
         <div className="flex flex-col gap-3 items-center">
             <div className="w-full flex gap-3">

@@ -6,21 +6,27 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { supabase } from "../auth/supabase";
 import { RotatingLines } from 'react-loader-spinner'
 import { Toaster, toast } from 'sonner'
+import { IoMdClose } from "react-icons/io";
+import { useStore } from "../store/zustand";
 
-const ListProducts = () => {
+interface UserProps {
+    setOpenEditModal: boolean
+  }
+
+const EditProducts = ({}) => {
+    const { setOpenEditModalFalse,selectedItemToEdit } = useStore();
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
-    const [imageArray,setImageArray] = useState<string[]>([])
     const [formData, setFormData] = useState({
         name: "",
         color: "",
-        storage:"",
+        storage:0,
         grade:"",
-        amt:"",
-        bh:"",
-        price:"",
-        img:[""],
+        amt:0,
+        bh:0,
+        price:0,
+        img:"",
         desc:"",
         category:"",
     });
@@ -32,14 +38,14 @@ const ListProducts = () => {
         console.log(formData)
     }
     
-    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        const fileList = event.target.files;
-        if (!fileList || fileList.length === 0) return;
+    // const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const fileList = event.target.files;
+    //     if (!fileList || fileList.length === 0) return;
     
-        const file = fileList[0];
-        console.log(file)
-        setSelectedFile(file)
-    }
+    //     const file = fileList[0];
+    //     console.log(file)
+    //     setSelectedFile(file)
+    // }
 
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
@@ -66,10 +72,8 @@ const ListProducts = () => {
             console.log('Image uploaded successfully:', data);
             const publicUrl = await supabase.storage.from('images').getPublicUrl(`phones/${file.name}`)
             if(publicUrl.data.publicUrl !== ""){
-                setImageArray([...imageArray, publicUrl?.data.publicUrl]);
-                console.log(imageArray,publicUrl?.data.publicUrl)
                 setFormData((prevState) => ({
-                    ...prevState,img: imageArray
+                    ...prevState,img: publicUrl?.data.publicUrl
                 }))
                 console.log(formData)
             }
@@ -85,37 +89,51 @@ const ListProducts = () => {
     e.preventDefault()
     setLoading(true)
    // handleUpload()
-   console.log(formData.img)
     const { data: { user } } = await supabase.auth.getUser()
     let vendor_id = user?.id
+    
     const {data, error} = await supabase
     .from('phones')
-    .insert([{ name: name, color: color,storage:storage,grade:grade,amt:amt, battery_health:bh,price:price,img:imageArray,desc:desc,vendor_id:vendor_id,category:category}])
-    .select()
+    .update([{ name: name, color: color,storage:storage,grade:grade,amt:amt, battery_health:bh,price:price,img:img,desc:desc,vendor_id:vendor_id,category:category}])
+    .eq('id', selectedItemToEdit?.id);
 
     if (error){
         console.log(error)
         setLoading(false)
         toast.error('Check again sir')
     }
-    if(data){
+  
         console.log("data")
-        toast.success('Hundred!!!!, item listed egbon')
+        toast.success('Hundred!!!!, item edited successfully egbon')
         setLoading(false)
         setTimeout(()=>{
-            router.push('/');
+            setOpenEditModalFalse()
         },2000)
-    }
+    
+    console.log(data)
+    setLoading(false)
 }
+
 useEffect(()=>{
-    console.log(imageArray)
-},[imageArray])
+    setFormData({
+        name: selectedItemToEdit?.name || "",
+        color: selectedItemToEdit?.color || "",
+        storage:selectedItemToEdit?.storage || 0,
+        grade:selectedItemToEdit?.grade || "",
+        amt:selectedItemToEdit?.amt || 0,
+        bh:selectedItemToEdit?.battery_health || 0,
+        price: selectedItemToEdit?.price || 0,
+        img: selectedItemToEdit?.img || "",
+        desc:selectedItemToEdit?.desc || "",
+        category:selectedItemToEdit?.category || "",
+    })
+},[])
     return ( 
-        <div className="bg-[#eee] h-screen w-screen flex justify-center items-center relative">
+        <div className="bg-[#eee] h-screen w-screen flex justify-center items-center fixed top-0 left-0 z-40">
              <Toaster position="top-right" richColors />
-            <Link href="/"> <p className=" text-slate-400 absolute left-7 top-5 text-[12px] hover:text-black transition duration-200">Return to home</p></Link>
+            <IoMdClose  className=" text-slate-400 absolute left-7 top-5 text-[24px] hover:text-black transition duration-200 cursor-pointer" onClick={setOpenEditModalFalse}/>
             <div className="w-[700px] bg-white p-3 px-10 rounded-md shadow shadow-lg shadow-slate-300">
-                <h1 className="text-3xl text-center mb-5 font-medium">List Product</h1>
+                <h1 className="text-3xl text-center mb-5 font-medium">Edit Product</h1>
                 <form action="" className="w-full flex flex-col gap-2">
                     <div className="flex flex-col  gap-1">
                         <label htmlFor="" className="text-[12px]"> Name</label>
@@ -146,12 +164,12 @@ useEffect(()=>{
                         </div>
                         <div className="flex flex-col  gap-1 w-full">
                             <label htmlFor="" className="text-[12px]">Price</label>
-                            <input type="number" id="price" onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
+                            <input type="number" id="price" onChange={onChange} value={price} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                         </div>
                     </div>
                     <div className="flex justify-between gap-2">
                         <div className="flex flex-col  gap-1">
-                            <label htmlFor="" className="text-[12px]">Main image</label>
+                            <label htmlFor="" className="text-[12px]">Images</label>
                             <input type="file" id="img" onChange={handleUpload} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none pt-2 " multiple/>
                         </div>
                         <div className="flex flex-col  gap-1 w-full">
@@ -164,20 +182,6 @@ useEffect(()=>{
                                 <option value="ipad">Ipad</option>
                                 <option value="others">Others</option>
                             </select>
-                        </div>
-                    </div>
-                    <div className="flex justify-between gap-2">
-                        <div className="flex flex-col  gap-1">
-                            <label htmlFor="" className="text-[12px]">Sub image 1</label>
-                            <input type="file" id="img" onChange={handleUpload} className="border border-slate-300 h-12 w-full rounded-md pl-2 focus:outline-none pt-2 " multiple/>
-                        </div>
-                        <div className="flex flex-col  gap-1">
-                            <label htmlFor="" className="text-[12px]">Sub image 2</label>
-                            <input type="file" id="img" onChange={handleUpload} className="border border-slate-300 h-12 w-full rounded-md pl-2 focus:outline-none pt-2 " multiple/>
-                        </div>
-                        <div className="flex flex-col  gap-1">
-                            <label htmlFor="" className="text-[12px]">Sub image 3</label>
-                            <input type="file" id="img" onChange={handleUpload} className="border border-slate-300 h-12 w-full rounded-md pl-2 focus:outline-none pt-2 " multiple/>
                         </div>
                     </div>
                     <div className="flex flex-col  gap-1">
@@ -201,4 +205,4 @@ useEffect(()=>{
      );
 }
  
-export default ListProducts;
+export default EditProducts;

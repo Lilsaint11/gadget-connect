@@ -1,8 +1,47 @@
 "use client"
 import Layout from "../components/Layout";
 import Link from "next/link";
+import { supabase } from "../auth/supabase";
+import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { ChangeEvent } from 'react';
+import { RotatingLines } from 'react-loader-spinner'
 
 const Signin = () => {
+    const router = useRouter()
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
+    const { email, password} = formData;
+    function onChange(e: ChangeEvent<HTMLInputElement>){
+        setFormData((prevState) => ({
+            ...prevState,[e.target.id]: e.target.value
+        }))
+    }
+
+    async function login(e:any){ 
+        e.preventDefault();
+        setLoading(true)
+        try {
+            let { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            })
+            if(data.user != null){
+                setLoading(false)
+                router.push("/")
+                }else{
+                    alert("invalid credentials")
+                }
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+        
+    }
+
     return ( 
         <Layout showHeaderAndFooter={false}>
         <div className="flex">
@@ -15,16 +54,26 @@ const Signin = () => {
                     <h1 className="text-[28px] font-bold">Sign in</h1>
                     <p className="text-[14px]">Don't have an account? <span className="underline text-blue-600"><Link href="/signup">Sign Up</Link></span></p>
                 </div>
-                <form action="" className="w-full flex flex-col gap-3">
+                <form action="" className="w-full flex flex-col gap-3" onSubmit={login}>
                     <div className="flex flex-col  gap-1 w-full">
                         <label htmlFor="" className="text-[12px]">Email</label>
-                        <input type="email" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none w-full"/>
+                        <input type="email" id="email" value={email} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none w-full"/>
                     </div>
                     <div className="flex flex-col  gap-1 w-full">
                         <label htmlFor="" className="text-[12px]">Password</label>
-                        <input type="password" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
+                        <input type="password"  id="password" value={password} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                     </div>
-                    <button className="h-12 w-56 bg-blue-700 text-white rounded-md ">Sign in</button>
+                    <button className="h-12 w-56 bg-blue-700 text-white rounded-md flex items-center justify-center">
+                    {!loading ? "Sign in" : 
+                                <RotatingLines
+                                    width="26"
+                                    strokeColor="white"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    ariaLabel="rotating-lines-loading"
+                                />
+                                }
+                    </button>
                 </form>
             </div>
         </div>
