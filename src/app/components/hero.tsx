@@ -19,7 +19,9 @@ const Hero = () => {
                         <img src="https://th.bing.com/th/id/R.081aadaecbfae94ff23d550edeb390e4?rik=pjDc%2bQFf9aInxQ&pid=ImgRaw&r=0" alt="" className="w-40" />
                         <img src="https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain" alt="" className="w-40 " />
                     </div>
+                    <div className="relative"> 
                     <img src="https://cdn.mos.cms.futurecdn.net/R4JUHrXr8HnCvFKLsxhe5h.jpg" alt="image" className="w-full " />
+                    </div>
                 </div>
             </div>
             <div className="w-full lg:hidden">

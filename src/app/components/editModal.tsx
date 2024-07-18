@@ -189,7 +189,7 @@ useEffect(()=>{
                         <textarea  className="border border-slate-300 h-16 rounded-md pt-1 pl-2 focus:outline-none" id="desc" value={desc} onChange={onChange}/>
                     </div>
                     <button className="h-12 w-full bg-blue-700 text-white rounded-md flex items-center justify-center" onClick={onSubmit}>
-                        {!loading ? "Add" : 
+                        {!loading ? "Edit" : 
                             <RotatingLines
                                 width="26"
                                 strokeColor="white"

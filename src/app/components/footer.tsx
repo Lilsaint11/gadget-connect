@@ -31,16 +31,16 @@ const Footer = () => {
             </div>
             <div className="flex gap-40 max-md:gap-28 max-sm:gap-10 max-sm:flex-col items-center">
                 <div className="flex gap-5 items-center">
-                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-[#39DB4A] hover:text-white transition duration-200">
+                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-blue-600 hover:text-white transition duration-200">
                         <LuFacebook />
                     </div>
-                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-[#39DB4A] hover:text-white transition duration-200">
+                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-blue-600 hover:text-white transition duration-200">
                         <LuInstagram />
                     </div>
-                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-[#39DB4A] hover:text-white transition duration-200">
+                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-blue-600 hover:text-white transition duration-200">
                         <LuTwitter />
                     </div>
-                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-[#39DB4A] hover:text-white transition duration-200">
+                    <div className="h-10 w-10 bg-blue-100 flex items-center justify-center rounded-full cursor-pointer hover:bg-blue-600 hover:text-white transition duration-200">
                         <LuYoutube />
                     </div>
                 </div>

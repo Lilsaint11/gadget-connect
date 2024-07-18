@@ -81,7 +81,7 @@ const Tablets = () => {
         <Layout>
             <div className="flex flex-col gap-10 items-center justify-center p-5 mt-5">
                 <h1 className="text-4xl font-bold text-[#333]">Tablets</h1>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 w-full">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full">
                     {allDeals.map(phone => (
                          <div className="text-[12px] bg-white  shadow-md shadow-slate-300 rounded-md flex flex-col  gap-1 justify-center items-center p-2 relative cursor-pointer w-full">
                          <div className="">

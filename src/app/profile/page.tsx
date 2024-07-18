@@ -190,19 +190,17 @@ const Profile = () => {
                                 <input type="email" id="email" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none w-full" value={email} onChange={onChange}/>
                             </div>
                         </div>
-                        <div className="flex flex-col  gap-1">
-                            <label htmlFor="" className="text-[12px]">Location</label>
-                            <input type="text" id="location" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none" value={location} onChange={onChange}/>
-                        </div>
+
                         <div className="flex justify-between gap-5">
+                            <div className="flex flex-col  gap-1 w-full">
+                                <label htmlFor="" className="text-[12px]">Location</label>
+                                <input type="text" id="location" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none" value={location} onChange={onChange}/>
+                            </div>
                             <div className="flex flex-col  gap-1 w-full">
                                 <label htmlFor="" className="text-[12px]">Phone Number</label>
                                 <input type="text" id="phoneNum" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none" value={phoneNum} onChange={onChange}/>
                             </div>
-                            <div className="flex flex-col  gap-1 w-full">
-                                <label htmlFor="" className="text-[12px]">Password</label>
-                                <input type="password" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
-                            </div>
+                           
                         </div>
                         <div className="flex justify-between gap-5">
                             <div className="flex flex-col  gap-1 w-full">
@@ -233,13 +231,15 @@ const Profile = () => {
                 </div>
                 <h3 className="text-2xl font-semibold mt-10">Listed Items</h3>
                 {listings ?
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
                     {listings?.map(phone => (
                         <>
                         <div className="text-[12px] bg-white  shadow-md shadow-slate-300 rounded-md flex flex-col  gap-1 justify-center items-center p-2 relative cursor-pointer">
                             <Link href={"/details/" + phone.id}>
                                 <div className="">
-                                    <img src={phone.img} alt="" className="w-40" />
+                                    {phone?.img?.length > 0 && ( // Check if array has at least one item
+                                        <img src={phone?.img[0]} alt="" className="w-40" />
+                                    )}
                                 </div>
                                 <div className="w-full flex flex-col  gap-1">
                                     <h2 className="text-[12px]">{phone.name} ({phone.color}) {phone.storage}gb</h2>
@@ -263,6 +263,37 @@ const Profile = () => {
                         </div>
                         </>
                         ))}   
+                        {listings?.map(phone => (
+                    <>
+                    <div className="text-[12px] bg-white  shadow-md shadow-slate-300 rounded-md flex flex-col  gap-1 justify-center items-center p-2 relative cursor-pointer">
+                        <Link href={"/details/" + phone.id}>
+                            <div className="">
+                                {phone?.img?.length > 0 && ( // Check if array has at least one item
+                                    <img src={phone?.img[0]} alt="" className="w-40" />
+                                )}
+                            </div>
+                            <div className="w-full flex flex-col  gap-1">
+                                <h2 className="text-[12px]">{phone.name} ({phone.color}) {phone.storage}gb</h2>
+                                <p className="font-bold text-[16px]">₦{addCommasToNumberString (phone.price)} <span className="font-normal text-[13px] text-gray-500">- {phone.grade}</span> </p>
+                                <div className="flex items-center -ml-1">
+                                    <IoLocationSharp className="text-[18px] text-red-600"/>
+                                    <p className="">{phone?.users?.location}</p>
+                                </div>
+                                <p className="">{phone.amt} piece(s) available</p>
+                                <div className="flex">
+                                    <p className="bg-blue-600 text-white px-1 rounded-sm ">{phone?.users?.vendor == true && "Official store"}</p>
+                                </div>
+                            </div>
+                        </Link>
+                        <div className="absolute bottom-0 right-10 w-8 h-7 md:w-10 md:h-8 flex items-center justify-center text-blue-600">
+                            <MdEdit className="text-[16px] md:text-[20px]" onClick={()=>editItem(phone)} />
+                        </div>
+                        <div className="absolute bottom-0 right-0 w-8 h-7 md:w-10 md:h-8 bg-blue-600 flex items-center justify-center rounded-tl-2xl rounded-br-md text-white">
+                        <IoTrashBinOutline className="text-[16px] md:text-[20px]" onClick={()=> deleteRow(phone?.id)}/>
+                        </div>
+                    </div>
+                    </>
+                    ))}   
                 </div> : 
                 <ProductSkeleton />
                 }

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { ChangeEvent } from 'react';
 import { RotatingLines } from 'react-loader-spinner'
+import { Toaster, toast } from 'sonner'
 
 const Signin = () => {
     const router = useRouter()
@@ -31,20 +32,22 @@ const Signin = () => {
             })
             if(data.user != null){
                 setLoading(false)
+                toast.success("Login successful")
                 router.push("/")
                 }else{
-                    alert("invalid credentials")
+                    toast.error("invalid login details")
                 }
         } catch (error) {
             console.log(error)
             setLoading(false)
         }
-        
+        setLoading(false)
     }
 
     return ( 
         <Layout showHeaderAndFooter={false}>
         <div className="flex">
+            <Toaster position="top-right" richColors />
             <div className="w-1/2 h-screen">
                 <img src="https://images.unsplash.com/photo-1677794438539-b21f8632ab70?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="h-screen object-cover"/>
             </div>
