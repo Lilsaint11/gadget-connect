@@ -77,7 +77,7 @@ const Signup = () => {
                 let vendor_id = data.user.id
                 console.log(vendor_id )
                 test(vendor_id)
-                toast.success("Check your email for verification link")
+                toast.success("Check your email for verification link.")
                 setUserId(data.user.id)
                 router.push("/signin")
             }else{
