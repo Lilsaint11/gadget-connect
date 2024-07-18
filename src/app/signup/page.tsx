@@ -1,5 +1,5 @@
 "use client"
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
