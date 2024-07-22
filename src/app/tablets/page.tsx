@@ -5,6 +5,7 @@ import { RiHeartAddLine } from "react-icons/ri";
 const Tablets = () => {
     const allDeals = [
         {
+            id:1,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -14,6 +15,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:2,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -23,6 +25,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:3,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -32,6 +35,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:4,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -41,6 +45,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:5,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -50,6 +55,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:6,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -59,6 +65,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:7,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -68,6 +75,7 @@ const Tablets = () => {
             storeType:"Official store",
         },
         {
+            id:8,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -83,7 +91,7 @@ const Tablets = () => {
                 <h1 className="text-4xl font-bold text-[#333]">Tablets</h1>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full">
                     {allDeals.map(phone => (
-                         <div className="text-[12px] bg-white  shadow-md shadow-slate-300 rounded-md flex flex-col  gap-1 justify-center items-center p-2 relative cursor-pointer w-full">
+                         <div className="text-[12px] bg-white  shadow-md shadow-slate-300 rounded-md flex flex-col  gap-1 justify-center items-center p-2 relative cursor-pointer w-full" key={phone.id}>
                          <div className="">
                              <img src={phone.image} alt="" className="w-40" />
                          </div>

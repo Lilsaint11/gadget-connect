@@ -55,7 +55,7 @@ const Signin = () => {
                <Link href="/"> <p className=" text-slate-400 absolute right-7 top-5 text-[12px] hover:text-black transition duration-200">Return to home</p></Link>
                 <div className="flex flex-col gap-2">
                     <h1 className="text-[28px] font-bold">Sign in</h1>
-                    <p className="text-[14px]">Don't have an account? <span className="underline text-blue-600"><Link href="/signup">Sign Up</Link></span></p>
+                    <p className="text-[14px]">Don&apos;t have an account? <span className="underline text-blue-600"><Link href="/signup">Sign Up</Link></span></p>
                 </div>
                 <form action="" className="w-full flex flex-col gap-3" onSubmit={login}>
                     <div className="flex flex-col  gap-1 w-full">

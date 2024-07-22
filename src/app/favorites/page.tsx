@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 const Favorites = () => {
     const todayDeals = [
         {
+            id:1,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -13,6 +14,7 @@ const Favorites = () => {
             storeType:"Official store",
         },
         {
+            id:2,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -22,6 +24,7 @@ const Favorites = () => {
             storeType:"Official store",
         },
         {
+            id:3,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -31,6 +34,7 @@ const Favorites = () => {
             storeType:"Official store",
         },
         {
+            id:4,
             name:"Iphone 13 (blue) 256gb",
             image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
             price:550000,
@@ -38,7 +42,47 @@ const Favorites = () => {
             location:"Radar tech store, Lagos",
             numOfItems:3,
             storeType:"Official store",
-        }
+        },
+        {
+            id:5,
+            name:"Iphone 13 (blue) 256gb",
+            image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
+            price:550000,
+            section:"uk used",
+            location:"Radar tech store, Lagos",
+            numOfItems:3,
+            storeType:"Official store",
+        },
+        {
+            id:6,
+            name:"Iphone 13 (blue) 256gb",
+            image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
+            price:550000,
+            section:"uk used",
+            location:"Radar tech store, Lagos",
+            numOfItems:3,
+            storeType:"Official store",
+        },
+        {
+            id:7,
+            name:"Iphone 13 (blue) 256gb",
+            image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
+            price:550000,
+            section:"uk used",
+            location:"Radar tech store, Lagos",
+            numOfItems:3,
+            storeType:"Official store",
+        },
+        {
+            id:8,
+            name:"Iphone 13 (blue) 256gb",
+            image:"https://th.bing.com/th/id/OIP.PprtLxbe44G9DpCBqh8QuAHaHa?rs=1&pid=ImgDetMain",
+            price:550000,
+            section:"uk used",
+            location:"Radar tech store, Lagos",
+            numOfItems:3,
+            storeType:"Official store",
+        },
     ]
     return ( 
         <Layout>
@@ -47,7 +91,7 @@ const Favorites = () => {
               
                 <div className="w-full px-10 flex flex-col  gap-5">
                     {todayDeals.map(deal => (
-                        <div className="flex gap-16 justify-between items-center w-full border border-slate-300 p-3">
+                        <div className="flex gap-16 justify-between items-center w-full border border-slate-300 p-3" key={deal.id}>
                             <div className="flex items-center w-56">
                                 <img src={deal.image} alt="" className="w-12"/>
                                 <div className="text-[12px]">

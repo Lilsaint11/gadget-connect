@@ -139,7 +139,7 @@ const Deals = () => {
     return ( 
         <div className="mt-5 flex flex-col  gap-10">
             <div className="flex flex-col  gap-5">
-                <h1 className="text-blue-700 text-[14px] ">Today's deals</h1>
+                <h1 className="text-blue-700 text-[14px] ">Today&apos;s deals</h1>
                 {todayDeals ?
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
                     {todayDeals?.map(phone => (
