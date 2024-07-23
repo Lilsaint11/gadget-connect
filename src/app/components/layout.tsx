@@ -3,11 +3,13 @@ import React, { ReactNode } from "react";
 import Header from "./header";
 import Footer from "./footer";
 
-type LayoutProps = {
+// Define LayoutProps type
+interface LayoutProps {
     children: ReactNode;
     showHeaderAndFooter?: boolean;
-};
+}
 
+// Define Layout component with React.FC<LayoutProps>
 const Layout: React.FC<LayoutProps> = ({ children, showHeaderAndFooter = true }) => {
     return (
         <div>
