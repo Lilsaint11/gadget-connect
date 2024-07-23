@@ -1,13 +1,14 @@
+// components/Layout.tsx
 import React, { ReactNode } from "react";
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 type LayoutProps = {
     children: ReactNode;
-    showHeaderAndFooter?: boolean; 
+    showHeaderAndFooter?: boolean;
 };
 
-const Layout = ({ children, showHeaderAndFooter = true }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ children, showHeaderAndFooter = true }) => {
     return (
         <div>
             {showHeaderAndFooter && <Header />}
