@@ -45,7 +45,6 @@ const Signin = () => {
     }
 
     return ( 
-        <Layout showHeaderAndFooter={false}>
         <div className="flex">
             <Toaster position="top-right" richColors />
             <div className="w-1/2 h-screen">
@@ -80,7 +79,6 @@ const Signin = () => {
                 </form>
             </div>
         </div>
-    </Layout>
      );
 }
  

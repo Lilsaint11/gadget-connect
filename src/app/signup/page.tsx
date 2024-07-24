@@ -95,7 +95,6 @@ const Signup = () => {
 
 
     return ( 
-        <Layout showHeaderAndFooter={false}>
             <div className="flex">
             <Toaster position="top-right" richColors />
                 <div className="w-1/2 h-screen">
@@ -184,7 +183,7 @@ const Signup = () => {
                     }
                 </div>
             </div>
-        </Layout>
+
      );
 }
  
