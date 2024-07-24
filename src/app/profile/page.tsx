@@ -174,13 +174,13 @@ const Profile = () => {
             <div className="flex flex-col gap-5 items-center justify-center p-5 ">
                 <Toaster position="top-right" richColors />
                 <h1 className="text-4xl font-bold text-[#333]"> Profile</h1>
-                <div>
-                    <form action="" className="w-[700px] flex flex-col gap-3">
+                <div className="w-full">
+                    <form action="" className="w-[700px] max-md:w-full flex flex-col gap-3">
                         <div className="flex flex-col  gap-1">
                             <label htmlFor="" className="text-[12px]">Full Name</label>
                             <input type="text" id="fullname" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none" value={fullname} onChange={onChange}/>
                         </div>
-                        <div  className="flex justify-between gap-5">
+                        <div  className="flex max-md:flex-col justify-between gap-5">
                             <div className="flex flex-col  gap-1 w-full">
                                 <label htmlFor="" className="text-[12px]">Business Name</label>
                                 <input type="text" id="businessName" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none w-full" value={businessName} onChange={onChange}/>
@@ -191,7 +191,7 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-between gap-5">
+                        <div className="flex max-md:flex-col justify-between gap-5">
                             <div className="flex flex-col  gap-1 w-full">
                                 <label htmlFor="" className="text-[12px]">Location</label>
                                 <input type="text" id="location" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none" value={location} onChange={onChange}/>
@@ -202,7 +202,7 @@ const Profile = () => {
                             </div>
                            
                         </div>
-                        <div className="flex justify-between gap-5">
+                        <div className="flex max-md:flex-col justify-between gap-5">
                             <div className="flex flex-col  gap-1 w-full">
                                 <label htmlFor="" className="text-[12px]">WhatsApp link</label>
                                 <input type="text" id="whatsapp" className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none" value={whatsapp} onChange={onChange}/>

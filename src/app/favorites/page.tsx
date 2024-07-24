@@ -86,22 +86,26 @@ const Favorites = () => {
     ]
     return ( 
         <Layout>
-           <div className="flex flex-col items-center  gap-10">
+           <div className="flex flex-col items-center  gap-10 mt-10">
                 <h1 className="text-4xl font-bold">Favorites</h1>
               
                 <div className="w-full px-10 flex flex-col  gap-5">
                     {todayDeals.map(deal => (
-                        <div className="flex gap-16 justify-between items-center w-full border border-slate-300 p-3" key={deal.id}>
-                            <div className="flex items-center w-56">
+                        <div className="flex gap-16 max-md:gap-8 justify-between items-center w-full border border-slate-300 p-3" key={deal.id}>
+                            <div className="flex max-sm:flex-col sm:items-center w-56">
                                 <img src={deal.image} alt="" className="w-12"/>
-                                <div className="text-[12px]">
+                                <div className="text-[12px]  max-sm:flex-col">
                                     <h3>{deal.name}</h3>
                                     <p>{deal.section}</p>
                                 </div>
                             </div>
-                            <p className="text-[12px] flex justify-center w-20">{deal.numOfItems}</p>
-                            <p className="text-[12px]">{deal.price}</p>
-                            <p className="text-[12px]">{deal.location}</p>
+                            <div className="flex gap-16 max-md:gap-8 max-sm:gap-2 max-sm:flex-col justify-between items-center ">
+                                <div className="flex gap-16 max-md:gap-8 justify-between items-center ">
+                                    <p className="text-[12px] text-center text-white h-5 w-5 bg-blue-600 rounded-full flex justify-center md:w-20">{deal.numOfItems}</p>
+                                    <p className="text-[12px]">{deal.price}</p>
+                                </div>
+                                <p className="text-[12px] ">{deal.location}</p>
+                            </div>
                             <div className="cursor-pointer">
                                 <IoMdClose />
                             </div>
