@@ -10,7 +10,7 @@ const Header = () => {
     const [userSession,setUserSession] = useState<any>()
     const [sessionState,setSessionState] = useState<boolean>(false)
     const {setUserDetails} = useStore();
-
+    const [navMenu,setNavMenu] = useState<boolean>(false)
     async function getUserInfo() {
         // Retrieve the current session
         const { data: session, error } = await supabase.auth.getSession();
@@ -50,8 +50,8 @@ const Header = () => {
       },[sessionState])
     return ( 
         <div className="flex flex-col gap-5 w-full md:my-1 p-5 pb-0">
-            <div className="flex justify-between items-center gap-5 md:gap-10">
-            <Link href="/"><h1 className="text-blue-600 font-bold  sm:text-[20px] cursor-pointer">GadgetsConnect</h1></Link>
+            <div className="flex justify-between items-center gap-5 md:gap-10 relative">
+              <Link href="/"><h1 className="text-blue-600 font-bold  sm:text-[20px] cursor-pointer">GadgetsConnect</h1></Link>
                 <div className="flex w-full h-8 md:h-10 max-sm:hidden">
                     <input type="text" className="w-full border border-blue-300 h-full  rounded-tl-sm rounded-bl-sm focus:outline-none pl-3"/>
                     <h5 className="h-full bg-blue-600 text-white w-10 md:w-12 flex items-center justify-center cursor-pointer rounded-tr-sm rounded-br-sm"><GoSearch className="text-[20px]"/></h5>
@@ -65,7 +65,13 @@ const Header = () => {
                         : 
                         <Link href="/signup"><p className="max-sm:hidden text-[14px] bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 cursor-pointer">SignUp</p></Link>
                     }
-                    <CiMenuFries className="sm:hidden cursor-pointer text-[20px]"/>
+                    <CiMenuFries className={`sm:hidden cursor-pointer text-[20px]  transition duration-200  ${navMenu ? "rotate-180" : "rotate-0"}`} onClick={()=>setNavMenu(!navMenu)}/>
+
+                    <div className={`bg-black absolute right-0 z-50 top-7 flex flex-col text-[12px] gap-1 bg-opacity-40 text-white p-2 sm:hidden transition duration-200  ${navMenu ? "opacity-1" : "opacity-0"}`}>
+                        <Link href="/list-products"><p className="border-b border-white pb-2 cursor-pointer">List product</p></Link>
+                        <p className="cursor-pointer" onClick={logout}>Log out</p>
+                    </div>
+
                 </div>
             </div>
             <div className="w-full max-lg:hidden flex justify-between">
