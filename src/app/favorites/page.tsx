@@ -89,7 +89,7 @@ const Favorites = () => {
            <div className="flex flex-col items-center  gap-10 mt-10">
                 <h1 className="text-4xl font-bold">Favorites</h1>
               
-                <div className="w-full px-10 flex flex-col  gap-5">
+                <div className="w-full px-10 max-sm:px-5 flex flex-col  gap-5">
                     {todayDeals.map(deal => (
                         <div className="flex gap-16 max-md:gap-8 justify-between items-center w-full border border-slate-300 p-3" key={deal.id}>
                             <div className="flex max-sm:flex-col sm:items-center w-56">

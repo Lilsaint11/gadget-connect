@@ -111,11 +111,11 @@ useEffect(()=>{
     console.log(imageArray)
 },[imageArray])
     return ( 
-        <div className="bg-[#eee] md:h-screen w-screen flex justify-center items-center relative">
+        <div className="bg-[#eee] md:h-screen sm:w-screen flex justify-center items-center relative">
              <Toaster position="top-right" richColors />
             <Link href="/"> <p className=" text-slate-400 absolute left-7 top-5 text-[12px] hover:text-black transition duration-200">Return to home</p></Link>
             <div className="w-[700px] bg-white p-3 px-10 rounded-md shadow shadow-lg shadow-slate-300">
-                <h1 className="text-3xl text-center mb-5 max-md:mt-5 font-medium">List Product</h1>
+                <h1 className="text-3xl text-center mb-5 max-md:mt-10 font-medium">List Product</h1>
                 <form action="" className="w-full flex flex-col gap-2">
                     <div className="flex flex-col  gap-1">
                         <label htmlFor="" className="text-[12px]"> Name</label>
