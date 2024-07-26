@@ -97,13 +97,13 @@ const Signup = () => {
     return ( 
             <div className="flex">
             <Toaster position="top-right" richColors />
-                <div className="w-1/2 h-screen">
+                <div className="w-1/2 max-md:w-2/5 h-screen max-sm:hidden">
                     <img src="https://images.unsplash.com/photo-1605170439002-90845e8c0137?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="h-screen object-cover"/>
                 </div>
-                <div className="h-screen w-1/2 flex flex-col gap-4  justify-center px-16 relative">
+                <div className="sm:h-screen w-1/2 max-md:w-full flex flex-col gap-4  justify-center px-16 max-md:px-8 max-[500px]:px-4 relative">
                    <Link href="/"> <p className=" text-slate-400 absolute right-7 top-5 text-[12px] hover:text-black transition duration-200">Return to home</p></Link>
                     <div className="flex flex-col gap-2">
-                        <h1 className="text-[28px] font-bold">Create an account</h1>
+                        <h1 className="text-[28px] font-bold max-sm:mt-5">Create an account</h1>
                         <p className="text-[14px]">Already have an account? <span className="underline text-blue-600"><Link href="/signin">Sign In</Link></span></p>
                     </div>
                     <div className="flex items-center gap-5">
@@ -116,7 +116,7 @@ const Signup = () => {
                             <label htmlFor="" className="text-[12px]">Full Name</label>
                             <input type="text" id="fullname" value={fullname} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                         </div>
-                        <div  className="flex justify-between gap-5">
+                        <div  className="flex max-sm:flex-col justify-between gap-5">
                             <div className="flex flex-col  gap-1 w-full">
                                 <label htmlFor="" className="text-[12px]">Business Name</label>
                                 <input type="text" id="businessName" value={businessName} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none w-full"/>
@@ -130,7 +130,7 @@ const Signup = () => {
                             <label htmlFor="" className="text-[12px]">Location</label>
                             <input type="text" id="location" value={location} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                         </div>
-                        <div className="flex justify-between gap-5">
+                        <div className="flex max-sm:flex-col justify-between gap-5">
                             <div className="flex flex-col  gap-1 w-full">
                                 <label htmlFor="" className="text-[12px]">Phone Number</label>
                                 <input type="text" id="phoneNumber" value={phoneNumber} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>

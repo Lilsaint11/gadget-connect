@@ -97,15 +97,15 @@ const Details = () => {
       },[])
     return ( 
         <Layout>
-            <div className="px-10 py-5 flex flex-col gap-5">
+            <div className="px-10 max-md:px-5 0 py-5 flex flex-col gap-5">
                 <div className="flex gap-2 items-center  ">
                     <Link href="/"><h3 className="text-blue-600">Home</h3></Link>
                     <IoIosArrowForward className="text-[10px]"/>
                     <h3 className="text-[#5c5c5c]">{details?.name}</h3> 
                 </div>
                 {details ? 
-                    <div className=" px-20">
-                        <div className="flex max-sm:flex-col">
+                    <div className=" px-20 max-lg:px-10 max-sm:px-0">
+                        <div className="flex max-sm:flex-col max-lg:gap-20">
                             <div className="w-full flex flex-col gap-3">
                                 {details?.img  && ( 
                                     <img src={details?.img[imageIndex]} alt="" className='object-cover w-[380px] h-[350px] max-sm:w-[350px] shadow shadow-md shadow-slate-300 rounded-sm' />

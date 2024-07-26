@@ -111,17 +111,17 @@ useEffect(()=>{
     console.log(imageArray)
 },[imageArray])
     return ( 
-        <div className="bg-[#eee] h-screen w-screen flex justify-center items-center relative">
+        <div className="bg-[#eee] md:h-screen w-screen flex justify-center items-center relative">
              <Toaster position="top-right" richColors />
             <Link href="/"> <p className=" text-slate-400 absolute left-7 top-5 text-[12px] hover:text-black transition duration-200">Return to home</p></Link>
             <div className="w-[700px] bg-white p-3 px-10 rounded-md shadow shadow-lg shadow-slate-300">
-                <h1 className="text-3xl text-center mb-5 font-medium">List Product</h1>
+                <h1 className="text-3xl text-center mb-5 max-md:mt-5 font-medium">List Product</h1>
                 <form action="" className="w-full flex flex-col gap-2">
                     <div className="flex flex-col  gap-1">
                         <label htmlFor="" className="text-[12px]"> Name</label>
                         <input type="text" id="name" value={name} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                     </div>
-                    <div  className="flex justify-between gap-2">
+                    <div  className="flex max-md:flex-col justify-between gap-2">
                         <div className="flex flex-col  gap-1 w-full">
                             <label htmlFor="" className="text-[12px]">Color</label>
                             <input type="text" id="color" value={color} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none w-full"/>
@@ -135,7 +135,7 @@ useEffect(()=>{
                             <input type="text" id="grade" value={grade} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                         </div>
                     </div>
-                    <div className="flex justify-between gap-2">
+                    <div className="flex max-md:flex-col justify-between gap-2">
                         <div className="flex flex-col  gap-1 w-full">
                             <label htmlFor="" className="text-[12px]">Amount of items</label>
                             <input type="number" id="amt" value={amt} onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
@@ -149,7 +149,7 @@ useEffect(()=>{
                             <input type="number" id="price" onChange={onChange} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none"/>
                         </div>
                     </div>
-                    <div className="flex justify-between gap-2">
+                    <div className="flex max-md:flex-col justify-between gap-2">
                         <div className="flex flex-col  gap-1">
                             <label htmlFor="" className="text-[12px]">Main image</label>
                             <input type="file" id="img" onChange={handleUpload} className="border border-slate-300 h-12 rounded-md pl-2 focus:outline-none pt-2 " multiple/>
@@ -166,7 +166,7 @@ useEffect(()=>{
                             </select>
                         </div>
                     </div>
-                    <div className="flex justify-between gap-2">
+                    <div className="flex max-md:flex-col justify-between gap-2">
                         <div className="flex flex-col  gap-1">
                             <label htmlFor="" className="text-[12px]">Sub image 1</label>
                             <input type="file" id="img" onChange={handleUpload} className="border border-slate-300 h-12 w-full rounded-md pl-2 focus:outline-none pt-2 " multiple/>

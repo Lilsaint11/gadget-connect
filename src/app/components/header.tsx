@@ -34,15 +34,18 @@ const Header = () => {
       }
 
       async function logout(){    
-        const { error } = await supabase.auth.signOut();
+        if (confirm("Do you want to logout")) {
+        
+          const { error } = await supabase.auth.signOut();
 
-        if (error) {
-          console.error('Error logging out:', error);
-          return;
+          if (error) {
+            console.error('Error logging out:', error);
+            return;
+          }
+          setSessionState(!sessionState)
+          console.log('Logged out successfully')
+          console.log(sessionState)
         }
-        setSessionState(!sessionState)
-        console.log('Logged out successfully')
-        console.log(sessionState)
       }
 
       useEffect(()=>{
@@ -67,9 +70,13 @@ const Header = () => {
                     }
                     <CiMenuFries className={`sm:hidden cursor-pointer text-[20px]  transition duration-200  ${navMenu ? "rotate-180" : "rotate-0"}`} onClick={()=>setNavMenu(!navMenu)}/>
 
-                    <div className={`bg-black absolute right-0 z-50 top-7 flex flex-col text-[12px] gap-1 bg-opacity-40 text-white p-2 sm:hidden transition duration-200  ${navMenu ? "opacity-1" : "opacity-0"}`}>
+                    <div className={`bg-blue-700 rounded-sm absolute right-0 z-50 top-7 flex flex-col text-[12px] gap-1 = text-white p-2 sm:hidden transition duration-200  ${navMenu ? "opacity-1" : "opacity-0"}`}>
                         <Link href="/list-products"><p className="border-b border-white pb-2 cursor-pointer">List product</p></Link>
-                        <p className="cursor-pointer" onClick={logout}>Log out</p>
+                        {userSession?.session !== null ? 
+                       <p className="cursor-pointer" onClick={logout}>Log out</p>
+                        : 
+                        <Link href="/signup"><p className=" cursor-pointer">SignUp</p></Link>
+                    }
                     </div>
 
                 </div>
